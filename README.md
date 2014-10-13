@@ -20,10 +20,10 @@ USAGE:
 1. Include this class in your php file. Example: require_once('class.styleedit.php');
 2. initialize the class. example: $cssEditor = new cssEditor();
 
-- Edit CSS
+- Edit CSS:
 $cssEditor->editCss($default, $custom, array("#selector 1", ".selector 2", ".etc"));
 
-- Return an array of edited stylesheet's content
+- Return an array of edited stylesheet's content:
 $cssEditor->getCssArray($default, $custom, array("#selector 1", ".selector 2", ".etc"));
 
 -- This Readme File Isn't Yet Finished --
