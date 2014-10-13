@@ -17,10 +17,8 @@ Limitation:
 
 USAGE:
 
-1. Include this class in your php file
-example: require_once('class.styleedit.php');
-2. initialize the class
-$cssEditor = new cssEditor();
+1. Include this class in your php file. Example: require_once('class.styleedit.php');
+2. initialize the class. example: $cssEditor = new cssEditor();
 
 - Edit CSS
 $cssEditor->editCss($default, $custom, array("#selector 1", ".selector 2", ".etc"));
