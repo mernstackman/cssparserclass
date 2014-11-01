@@ -1,3 +1,4 @@
+<?php
 class cssEditor {
 	public function editCss($defCss, $custCss, $selectors){
 
@@ -131,6 +132,8 @@ class cssEditor {
 				}
 			}
 			
-			return $custStyle;
+			return $newStyle;
 	}
 }
+
+?>
