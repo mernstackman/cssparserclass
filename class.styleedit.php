@@ -1,5 +1,7 @@
 <?php
 class cssEditor {
+	
+	// edit stylesheet
 	public function editCss($defCss, $custCss, $selectors){
 
 		preg_match_all( '/(?ims)([a-z0-9\s\.\,\:#_\-@]+)\{([^\}]*)\}/', $defCss, $defArray);
@@ -79,6 +81,7 @@ class cssEditor {
 		return $cssContent;
 	}
 	
+	// get array of new style
 	public function getCssArray($defCss, $custCss, $selectors){
 				preg_match_all( '/(?ims)([a-z0-9\s\.\,\:#_\-@]+)\{([^\}]*)\}/', $defCss, $defArray);
 		$defStyle = array();
