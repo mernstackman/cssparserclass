@@ -1,10 +1,8 @@
 <?php
 class cssEditor {
-	
-	// edit stylesheet
 	public function editCss($defCss, $custCss, $selectors){
-
-		preg_match_all( '/(?ims)([a-z0-9\s\.\,\:#_\-@]+)\{([^\}]*)\}/', $defCss, $defArray);
+	$custCss = str_replace(array("\\"), "", $custCss);
+		preg_match_all('/(?ims)([a-z0-9\s\.\,\[\]\=\"\:\#_\-@]+)\{([^\}]*)\}/', $defCss, $defArray);
 		$defStyle = array();
 		foreach ($defArray[0] as $i => $x)
 		{
@@ -21,7 +19,7 @@ class cssEditor {
 				}
 		}
 																	
-		preg_match_all( '/(?ims)([a-z0-9\s\.\,\:#_\-@]+)\{([^\}]*)\}/', $custCss, $custArray);
+		preg_match_all('/(?ims)([a-z0-9\s\.\,\[\]\=\"\:\#_\-@]+)\{([^\}]*)\}/', $custCss, $custArray);
 		$custStyle = array();
 			foreach ($custArray[0] as $i => $x)
 			{
@@ -67,7 +65,7 @@ class cssEditor {
 							$cssContent .= "\n " . $k . ': ' . str_replace(array("\\"), "", $v[0]) . ";";
 						} else {
 							foreach($v as $e){
-								$cssContent .= "\n " . $k . ': ' . str_replace(array("\\"), "", $e) . ";";	
+								$cssContent .= "\n " . $k . ': ' . str_replace(array("\\"), "", $e) . ";";
 							}
 						}
 					}
@@ -76,18 +74,19 @@ class cssEditor {
 				}
 				$cssContent .= "\n}\r\n\r\n";									
 			}
-			
 
 		return $cssContent;
 	}
 	
-	// get array of new style
 	public function getCssArray($defCss, $custCss, $selectors){
-				preg_match_all( '/(?ims)([a-z0-9\s\.\,\:#_\-@]+)\{([^\}]*)\}/', $defCss, $defArray);
+	$custCss = str_replace(array("\\"), "", $custCss);
+		preg_match_all( '/(?ims)([a-z0-9\s\.\,\[\]\=\"\:\#_\-@]+)\{([^\}]*)\}/', $defCss, $defArray);
 		$defStyle = array();
+		
 		foreach ($defArray[0] as $i => $x)
 		{
 			$selector = trim($defArray[1][$i]);
+			
 			$rules = explode(';', trim($defArray[2][$i]));
 			$defStyle[$selector] = array();
 				foreach ($rules as $strRule)
@@ -100,11 +99,13 @@ class cssEditor {
 				}
 		}
 																	
-		preg_match_all( '/(?ims)([a-z0-9\s\.\,\:#_\-@]+)\{([^\}]*)\}/', $custCss, $custArray);
+		preg_match_all( '/(?ims)([a-z0-9\s\.\,\[\]\=\"\:\#_\-@]+)\{([^\}]*)\}/', $custCss, $custArray);
 		$custStyle = array();
+		// $test = "";
 			foreach ($custArray[0] as $i => $x)
 			{
 				$selector = trim($custArray[1][$i]);
+				// $test .= $custArray[1][$i];
 				$rules = explode(';', trim($custArray[2][$i]));
 				$custStyle[$selector] = array();
 				foreach ($rules as $strRule)
@@ -134,8 +135,8 @@ class cssEditor {
 					$newStyle[$selector] = $defStyle[$selector];
 				}
 			}
+		return $newStyle;	
 			
-			return $newStyle;
 	}
 }
 
