@@ -5,6 +5,8 @@ This PHP Class is used to parse css file/ stylesheet.
 Was improved from Gabriel Anderson's answer (http://stackoverflow.com/a/6589386/2232458) about css parsing method.
 Many thanks to Gabriel Anderson.
 
+And the biggest THANKS is to God !
+
 Key Features:
 - Edit stylesheet's content.
 - Return an array of edited css.
